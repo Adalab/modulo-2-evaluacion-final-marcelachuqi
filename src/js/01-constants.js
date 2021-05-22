@@ -1,4 +1,3 @@
-"use strict";
 let globalData = [];
 
 const form = document.querySelector("form_js");
