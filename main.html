@@ -10,16 +10,19 @@
     <main>
       <div>
         <h2>Buscador de series</h2>
-        <form action="">
-          <input type="search" />
-
-          <button type="submit">Search</button>
+        <form class="form_js" action="" method="POST">
+          <input class="search_js" type="search" name="name" />
+          <button class="button_js" type="submit">Search</button>
         </form>
       </div>
 
       <div>
         <h2>Resultado de la búsqueda</h2>
-        <ul></ul>
+        <ul class="result_js">
+          <li>
+            <img />
+          </li>
+        </ul>
       </div>
 
       <div>
@@ -28,6 +31,9 @@
       </div>
     </main>
     <footer></footer>
-    <script src="main.js"></script>
+    <script src="/constants.js"></script>
+    <script src="/fetch.js"></script>
+    <script src="/main.js"></script>
+    <script src="/search.js"></script>
   </body>
 </html>
