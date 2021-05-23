@@ -2,6 +2,9 @@
 
 // let globalData = [];
 
+// let newSerieList = document.createTextNode(`${  }`);
+// liElement.appendChild(newSerieList);
+
 // function showSerie(){
 //   let liElement = document.createElement("li");
 // let newSerieList = document.createTextNode(`${globalData}`);
@@ -44,3 +47,23 @@
 // }
 
 // console.log("hola");
+// console.log(globalData[0]);
+
+// function showlist() {
+//   const nameShow = data.show.name[0];
+//   console.log(nameShow);
+// }
+
+// function handleSubmit(event) {
+//   event.preventDefault(event);
+//   showlist();
+//   renderSeries();
+// }
+
+// function handleKeySearch() {
+//   const filteredSeries = filterSeries();
+//   renderSeries(filteredSeries);
+// }
+
+// form.addEventListener("submit", handleSubmit);
+// serieInput.addEventListener("keyup", handleKeySearch);

@@ -1,5 +1,5 @@
 "use strict";
-let globalData = [
+let serieApi = [
   {
     score: 10.099338,
     show: {
