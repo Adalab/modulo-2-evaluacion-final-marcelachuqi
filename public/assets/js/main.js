@@ -1,3 +1,4 @@
+"use strict";
 // //FUNCTIONS
 
 // function handleClickSearch() {
@@ -15,7 +16,6 @@
 // SearchButton.addEventListener("click", handleClickSearch);
 console.log("hola");
 
-"use strict";
 let globalData = [];
 
 const form = document.querySelector("form_js");

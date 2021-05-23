@@ -1,1 +1,2 @@
-"use strict";console.log(">> Ready :)");
+"use strict";
+console.log(">> Ready :)");
