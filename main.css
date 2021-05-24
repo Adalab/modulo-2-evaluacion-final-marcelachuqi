@@ -1,37 +1,49 @@
-body {
-  background-color: rgb(240, 223, 223);
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin: 20px;
+:root {
+  text-decoration: none;
+  list-style: none;
+}
+.window {
+  background-color: rgb(232, 209, 209);
   color: rosybrown;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  padding: 10px;
+  padding: 4rem;
 }
 .results {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   width: 100%;
-  margin: 20px;
   background-color: rosybrown;
   color: snow;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  padding: 10px;
+  padding: 40px;
 }
 
 .form {
-  border-radius: 50px;
-  width: 50px;
   margin: 20px;
   display: flex;
   flex-direction: row;
   justify-content: right;
-  align-content: space-between;
   padding: 10px;
 }
+.input_form {
+  border-radius: 10px;
+  border: 1px solid rosybrown;
+  margin: 3px;
+  height: 30px;
+}
+
 ::placeholder {
   color: saddlebrown;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-style: italic;
-  font-size: 10px;
+  font-size: 12px;
+  padding: 3px;
+}
+
+.msj_js {
+  color: whitesmoke;
+}
+.title_js {
+  padding: 10px;
+  text-align: left;
 }
