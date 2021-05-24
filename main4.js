@@ -32,7 +32,7 @@ function landing() {
           DivElement.innerHTML += `<li>${name}</li>`;
       });
   } else {
-    console.log("hola");
+    console.log("refreshing");
   }
 }
 landing();
@@ -69,42 +69,10 @@ btn.addEventListener("click", getSerie);
 
 //FAVORITE
 
-// function addListenersToCards() {
-//   const allSerie = document.querySelectorAll(".fav_js");
-//   for (const card of allCards) {
-//     card.addEventListener("click", handleClickCard);
-//   }
-// }
+function handlerfavorite(event) {
+  let serieClicked = event.target;
+  console.log("me han clicado");
+  console.log(serieClicked);
+}
 
-// function handleClickCard(event) {
-//   const whereTheUserClicked = event.target;
-//   const whereIAddedTheEvent = event.currentTarget;
-
-//   console.log(globalData);
-//   console.log(whereIAddedTheEvent);
-
-//   const selectedId = whereIAddedTheEvent.id;
-
-//   const paletteInfo = globalData.find((palette) => palette.id === selectedId);
-//   const paletteFav = favoritePalettes.find(
-//     (eachPalette) => eachPalette.id === selectedId
-//   );
-
-//   if (paletteFav === undefined) {
-//     // No es ya favorita
-//     // La añado
-//     favoritePalettes.push(paletteInfo);
-//   } else {
-//     // Ya era una favorita
-//     // La quito de favoritas
-//     favoritePalettes = favoritePalettes.filter(
-//       (palette) => palette.id !== selectedId
-//     );
-//   }
-
-//   const filteredPalettes = filterPalettes();
-
-//   // render
-//   renderPalettes(filteredPalettes);
-//   //whereIAddedTheEvent.classList.toggle('favorite');
-// }
+resultSerie.addEventListener("click", handlerfavorite);

@@ -2,6 +2,11 @@
   text-decoration: none;
   list-style: none;
 }
+
+.all_section {
+  display: flex;
+  flex-direction: row-reverse;
+}
 .window {
   background-color: rgb(232, 209, 209);
   color: rosybrown;
@@ -20,9 +25,6 @@
 
 .form {
   margin: 20px;
-  display: flex;
-  flex-direction: row;
-  justify-content: right;
   padding: 10px;
 }
 .input_form {
@@ -46,4 +48,17 @@
 .title_js {
   padding: 10px;
   text-align: left;
+}
+
+.fav_js {
+}
+
+.favorites {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: snow;
+  color: rosybrown;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 40px;
 }
