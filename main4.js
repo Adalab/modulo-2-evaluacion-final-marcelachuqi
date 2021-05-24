@@ -23,13 +23,13 @@ function getSerie(event) {
           globalData.push(
             `${element.show.name}` +
               " " +
-              ImgElement.setAttribute("src", `${element.show.image.medium}`)
+              `<img src="${element.show.image.medium}" />`
           )
         );
+        localStorage.setItem("show", JSON.stringify(globalData));
+
         for (const name of globalData)
           DivElement.innerHTML += `<li>${name}</li>`;
-
-        console.log(globalData);
       });
   } else {
     globalData = JSON.parse(localStorage.getItem("name"));

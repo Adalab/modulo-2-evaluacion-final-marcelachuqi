@@ -1,0 +1,37 @@
+body {
+  background-color: rgb(240, 223, 223);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 20px;
+  color: rosybrown;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 10px;
+}
+.results {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 20px;
+  background-color: rosybrown;
+  color: snow;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  padding: 10px;
+}
+
+.form {
+  border-radius: 50px;
+  width: 50px;
+  margin: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: right;
+  align-content: space-between;
+  padding: 10px;
+}
+::placeholder {
+  color: saddlebrown;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-style: italic;
+  font-size: 10px;
+}
