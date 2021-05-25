@@ -50,7 +50,8 @@
   text-align: left;
 }
 
-.fav_js {
+.js-serie {
+  border: 3px solid 2px black;
 }
 
 .favorites {
@@ -61,4 +62,11 @@
   color: rosybrown;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   padding: 40px;
+}
+.favbutton_js {
+  border-radius: 20px;
+  border: 2px solid rosybrown;
+  color: rosybrown;
+  padding: 5px;
+  margin-bottom: 30px;
 }

@@ -33,7 +33,7 @@ function landing() {
             `<img src="${name.show.image.medium}" />`;
       });
   } else {
-    globalData = JSON.parse(localStorage.getItem("palettes"));
+    console.log("refreshing");
   }
 }
 landing();
@@ -49,25 +49,28 @@ function getSerie(event) {
       .then((data) => {
         globalData = data;
         localStorage.setItem("show", JSON.stringify(globalData));
-        RenderShow(globalData);
+
+        for (const item of globalData)
+          DivElement.innerHTML +=
+            `<li>${item.show.name}</li>` +
+            " " +
+            `<img src="${item.show.image.medium}" />`;
       });
   } else {
-    console.log("LocalStorage Empty");
+    landing();
   }
+  const serieIn = favorites.find((favoriteId) => favoriteId === item.id);
+  let classFavorite = " ";
+  if (serieIn === undefined) {
+    classFavorite = "";
+  } else {
+    classFavorite = "favorite";
+  }
+  favElement.innerHTML += `<li id="${item.show.id}" class="fav_js ${classFavorite}">`;
 }
-btn.addEventListener("click", getSerie);
+addListenersToSerie();
 
-function RenderShow(globalData) {
-  for (const item of globalData) {
-    DivElement.innerHTML +=
-      `<li>${item.show.name}</li>` +
-      " " +
-      `<img src="${item.show.image.medium}" />` +
-      " " +
-      `<button class="favbutton_js" id=${item.show.id}> Agregar a favoritos </button>`;
-  }
-  addListenersToSerie(globalData);
-}
+btn.addEventListener("click", getSerie);
 
 function filterSerie() {
   const filteredSerie = globalData.filter((show) =>
@@ -77,35 +80,24 @@ function filterSerie() {
 }
 
 //FAVORITE
-function addListenersToSerie(globalData) {
-  //   const serieIn = favorites.find(
-  //     (favoriteId) => favoriteId === globalData.show.id
-  //   );
-  //   let classFavorite = " ";
-  //   if (serieIn === undefined) {
-  //     classFavorite = "";
-  //   } else {
-  //     classFavorite = "favorite";
-  //   }
-  //   DivElement.innerHTML += `<li id="${globalData.show.id}" class="js-serie ${classFavorite}">`;
-  //   const allSerie = document.querySelectorAll(".js-serie");
-  //   for (const serie of allSerie) {
-  //     serie.addEventListener("click", handleClickSerie);
-  //   }
+function addListenersToSerie() {
+  const allSerie = document.querySelectorAll(".js-serie");
+  for (const serie of allSerie) {
+    serie.addEventListener("click", handleClickSerie);
+  }
 }
 
-function handleClickSerie(ev, globalData) {
-  console.log(ev.target.id);
+function handleClickSerie(event) {
+  const serieClicked = event.target;
+  const serieFavPlace = event.currentTarget;
+  const selectedId = serieFavPlace.show.id;
+
+  const serieIn = favorites.find((favoriteId) => favoriteId === selectedId);
+
+  if (serieIn === undefined) {
+    favorites.push(selectedId);
+  } else {
+    favorites = favorites.filter((favoriteId) => favoriteId !== selectedId);
+  }
+  renderFilteredSerie();
 }
-
-resultSerie.addEventListener("click", handleClickSerie);
-
-// const serieIn = favorites.find((favoriteId) => favoriteId === selectedId);
-// let classFavorite = "";
-// if (serieIn === undefined) {
-//   favorites.push(selectedId);
-// } else {
-//   favorites = favorites.filter((favoriteId) => favoriteId !== selectedId);
-// }
-
-// RenderShow();
