@@ -62,9 +62,7 @@ function RenderShow(globalData) {
     DivElement.innerHTML +=
       `<li>${item.show.name}</li>` +
       " " +
-      `<img src="${item.show.image.medium}" />` +
-      " " +
-      `<button class="favbutton_js" id=${item.show.id}> Agregar a favoritos </button>`;
+      `<img src=${item.show.image.medium} id="${item.show.id}"/>`;
   }
   //   addListenersToSerie(globalData);
 }
@@ -77,16 +75,24 @@ function filterSerie() {
 }
 
 function handleClickSerie(ev, globalData) {
-  let ShowID = ev.target.id;
-  console.log(ShowID);
-  localStorage.setItem("favorites", JSON.stringify(ShowID));
-  let favoriteId = " ";
-  const isFav = favorites.find((ShowID) => favoriteId === ShowID);
-  if (isFav === undefined) {
-    favorites.push(ShowID);
-  } else {
-    favorites = favorites.filter((favoriteId) => favoriteId !== ShowID);
-  }
-  console.log(favorites);
+  let favoriteClicked = ev.target;
+  // const ID = parseInt(favoriteClicked.id);
+  // favorite = favorites.push(ID);
+  console.log(favoriteClicked);
+  // console.log(ID);
+  favorites = favoriteClicked;
+  // favorites = ShowID;
+  // let favoriteId = " ";
+  //
+  // if (isFav !== undefined) {
+  //   favorites.push(ShowID);
+  // } else {
+  //   favorites = favorites.filter((favoriteId) => favoriteId !== ShowID);
+  // }
+
+  favorites = JSON.parse(localStorage.getItem("favorites"));
+  localStorage.setItem("favorites", JSON.stringify(favoriteClicked));
+
+  favElement.innerHTML += `<li>${favoriteClicked}</li>`;
 }
 resultSerie.addEventListener("click", handleClickSerie);
