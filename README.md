@@ -7,7 +7,7 @@ Aquí **la segunda evaluación y puesta en práctica de los principios de progam
 El resultado final por si queréis echar un vistazo:
 
 ```bash
-http://beta.adalab.es/modulo-1-evaluacion-final-marcelachuqi/
+http://beta.adalab.es/modulo-2-evaluacion-final-marcelachuqi/
 ```
 
 ### Contenido 📦
