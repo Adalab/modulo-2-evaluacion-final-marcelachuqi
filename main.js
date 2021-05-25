@@ -67,6 +67,17 @@ function RenderShow(globalData) {
   //   addListenersToSerie(globalData);
 }
 
+function RenderFav(favList) {
+  favElement.innerHTML = "";
+  for (const item of favList) {
+    favElement.innerHTML +=
+      `<li>${item.show.name}</li>` +
+      " " +
+      `<img src=${item.show.image.medium} id="${item.show.id}"/>`;
+  }
+  //   addListenersToSerie(globalData);
+}
+
 function filterSerie() {
   const filteredSerie = globalData.filter((show) =>
     show.name.toLowerCase().includes(userSearch)
@@ -74,25 +85,25 @@ function filterSerie() {
   return filteredSerie;
 }
 
-function handleClickSerie(ev, globalData) {
+function handleClickSerie(ev) {
   let favoriteClicked = ev.target;
-  // const ID = parseInt(favoriteClicked.id);
+  const ID = parseInt(favoriteClicked.id);
   // favorite = favorites.push(ID);
   console.log(favoriteClicked);
-  // console.log(ID);
-  favorites = favoriteClicked;
-  // favorites = ShowID;
-  // let favoriteId = " ";
-  //
-  // if (isFav !== undefined) {
-  //   favorites.push(ShowID);
-  // } else {
-  //   favorites = favorites.filter((favoriteId) => favoriteId !== ShowID);
-  // }
+  // Hacer un find sobre favorites para ver si ya esta
+  const favoriteRepited = favorites.find((objSerie) => objSerie.show.id === ID);
 
-  favorites = JSON.parse(localStorage.getItem("favorites"));
-  localStorage.setItem("favorites", JSON.stringify(favoriteClicked));
+  if (favoriteRepited === undefined) {
+    const favoritefind = globalData.find((objSerie) => objSerie.show.id === ID);
+    console.log("favoritefind", favoritefind);
+    favorites.push(favoritefind);
+  }
+  RenderFav(favorites);
 
-  favElement.innerHTML += `<li>${favoriteClicked}</li>`;
+  const setfav = localStorage.setItem("favorites", JSON.stringify(favorites));
 }
 resultSerie.addEventListener("click", handleClickSerie);
+
+favorites = JSON.parse(localStorage.getItem("favorites"));
+
+RenderFav(favorites);
