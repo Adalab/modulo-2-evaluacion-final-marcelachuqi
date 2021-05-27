@@ -43,17 +43,17 @@ function getSerie(event) {
   event.preventDefault();
   DivElement.innerHTML = `<li></li>`;
   const userSearch = serieInput.value.toLowerCase();
-  if (localStorage.getItem("show") !== "null") {
-    fetch(`http://api.tvmaze.com/search/shows?q=${userSearch}`)
-      .then((response) => response.json())
-      .then((data) => {
-        globalData = data;
-        localStorage.setItem("show", JSON.stringify(globalData));
-        RenderShow(globalData);
-      });
-  } else {
-    console.log("LocalStorage Empty");
-  }
+  // if (localStorage.getItem("show") !== "null") {
+  fetch(`http://api.tvmaze.com/search/shows?q=${userSearch}`)
+    .then((response) => response.json())
+    .then((data) => {
+      globalData = data;
+      localStorage.setItem("show", JSON.stringify(globalData));
+      RenderShow(globalData);
+    });
+  // } else {
+  //   console.log("LocalStorage Empty");
+  // }
 }
 btn.addEventListener("click", getSerie);
 
@@ -67,8 +67,9 @@ function RenderShow(globalData) {
   //   addListenersToSerie(globalData);
 }
 
-function RenderFav(favserie) {
-  for (const item of favserie) {
+function RenderFav(favoriteClicked) {
+  favElement.innerHTML = "";
+  for (const item of favoriteClicked) {
     favElement.innerHTML +=
       `<li>${item.show.name}</li>` +
       " " +
@@ -76,11 +77,6 @@ function RenderFav(favserie) {
   }
   //   addListenersToSerie(globalData);
 }
-// function RenderFav2(favserie) {
-//   for (const item of favserie) {
-//     favElement.innerHTML = `<li> "sfasfafaw"  </li>`;
-//   }
-// }
 
 function filterSerie() {
   const filteredSerie = globalData.filter((show) =>
@@ -92,39 +88,28 @@ function filterSerie() {
 function handleClickSerie(ev) {
   let favoriteClicked = ev.target;
   const ID = parseInt(favoriteClicked.id);
-  const favoriteGlobal = globalData.find((objSerie) => objSerie.show.id === ID);
-  const newfav = favorites.push(favoriteGlobal);
-  localStorage.setItem("favorites", JSON.stringify(favorites));
-  RenderFav(favorites);
-  const favoriteIn = favorites.find((objSeriex) => objSeriex.show.id === ID);
+  // favorite = favorites.push(ID);
+  console.log(favoriteClicked);
+  favoriteClicked = JSON.parse(localStorage.getItem("favorites"));
+  favoriteClicked = favorites;
 
-  console.log(favoriteIn);
-  if (favoriteIn === undefined) {
-    favorites.push(favoriteGlobal);
+  // Hacer un find sobre favorites para ver si ya esta
+  const favoriteRepited = favorites.find((objSerie) => objSerie.show.id === ID);
+
+  if (favoriteRepited === undefined) {
+    const favoritefind = globalData.find((objSerie) => objSerie.show.id === ID);
+    console.log("favoritefind", favoritefind);
+    favorites.push(favoritefind);
   } else {
-    favorites = favorites.filter((objSeriex) => objSeriex.show.id !== ID);
+    const PositionClicked = favorites.findIndex(
+      (objSerie) => objSerie.show.id === ID
+    );
+    favorites.splice(PositionClicked, 1);
   }
-}
 
+  const setfav = localStorage.setItem("favorites", JSON.stringify(favorites));
+  RenderFav(favoriteClicked);
+}
 resultSerie.addEventListener("click", handleClickSerie);
 
-// function handleClickSerieRemove(ev) {
-//   let favoriteClicked = ev.target;
-//   const ID = parseInt(favoriteClicked.id);
-//   const favoriteGlobal = favorites.find((objSerie) => objSerie.show.id === ID);
-//   const newfav = favorites.pop(favoriteGlobal);
-
-//   localStorage.removeItem("favorites", JSON.stringify(favorites));
-//   RenderFav2(favorites);
-//   const favoriteIn = favorites.find((objSeriex) => objSeriex.show.id === ID);
-
-//   if (favoriteIn !== undefined) {
-//     favoriteGlobal.pop(favorites);
-//   } else {
-//     favorites = favorites.filter((objSeriex) => objSeriex.show.id === ID);
-//   }
-// }
-
-// favoriteStyle.addEventListener("click", handleClickSerieRemove);
-
-// // favorites = JSON.parse(localStorage.getItem("favorites"));
+// RenderFav(favorites);
