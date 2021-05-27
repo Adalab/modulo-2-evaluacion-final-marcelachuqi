@@ -18,6 +18,7 @@ let favElement = document.createElement("div");
 let favImgElement = document.createElement("img");
 favoriteStyle.appendChild(favElement);
 favoriteStyle.appendChild(favImgElement);
+const logButton = document.querySelector(".log_js");
 
 function landing() {
   if (userSearch === "") {
@@ -62,7 +63,9 @@ function RenderShow(globalData) {
     DivElement.innerHTML +=
       `<li>${item.show.name}</li>` +
       " " +
-      `<img src=${item.show.image.medium} id="${item.show.id}"/>`;
+      `<img src=${item.show.image.medium} id="${item.show.id}"/>` +
+      " " +
+      `<p>${item.show.language}</p>`;
   }
   //   addListenersToSerie(globalData);
 }
@@ -113,3 +116,10 @@ function handleClickSerie(ev) {
 resultSerie.addEventListener("click", handleClickSerie);
 
 // RenderFav(favorites);
+
+function handlerFavorites(ev) {
+  ev.preventDefault();
+  console.log(favorites.length);
+}
+
+logButton.addEventListener("click", handlerFavorites);
