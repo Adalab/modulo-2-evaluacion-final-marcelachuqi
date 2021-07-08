@@ -18,25 +18,15 @@ let favElement = document.createElement("div");
 let favImgElement = document.createElement("img");
 favoriteStyle.appendChild(favElement);
 favoriteStyle.appendChild(favImgElement);
-const logButton = document.querySelector(".log_js");
 
 function landing() {
   if (userSearch === "") {
-    DivElement.innerHTML = `<h3 class="msj_js"> Let's start... </h3>`;
-    fetch(`http://api.tvmaze.com/search/shows?q=serie`)
-      .then((response) => response.json())
-      .then((data) => {
-        let data1 = data;
-        for (const name of data1)
-          DivElement.innerHTML +=
-            `<li>${name.show.name}</li>` +
-            " " +
-            `<img src="${name.show.image.medium}" />`;
-      });
+    DivElement.innerHTML = `<h3 class="msj_js"> MOVIES & TV SHOW  </h3>`;
   } else {
     console.log("buscando tus series...");
   }
 }
+
 landing();
 
 //USER SEARCH
@@ -61,11 +51,10 @@ btn.addEventListener("click", getSerie);
 function RenderShow(globalData) {
   for (const item of globalData) {
     DivElement.innerHTML +=
-      `<li>${item.show.name}</li>` +
-      " " +
       `<img src=${item.show.image.medium} id="${item.show.id}"/>` +
       " " +
-      `<p>${item.show.language}</p>`;
+      `<img class="heart" src="../pngaaa.com-50870.png"/>` +
+      `<p> Language: ${item.show.language}</p>`;
   }
   //   addListenersToSerie(globalData);
 }
@@ -74,9 +63,7 @@ function RenderFav(favoriteClicked) {
   favElement.innerHTML = "";
   for (const item of favoriteClicked) {
     favElement.innerHTML +=
-      `<li>${item.show.name}</li>` +
-      " " +
-      `<img src=${item.show.image.medium} id="${item.show.id}"/>`;
+      " " + `<img src=${item.show.image.medium} id="${item.show.id}"/>`;
   }
   //   addListenersToSerie(globalData);
 }
