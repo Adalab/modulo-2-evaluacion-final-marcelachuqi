@@ -12,6 +12,7 @@ let ImgElement = document.createElement("img");
 resultSerie.appendChild(ImgElement);
 resultSerie.appendChild(DivElement);
 const userSearch = serieInput.value.toLowerCase();
+const heart = document.querySelector(".heart");
 
 const favoriteStyle = document.querySelector(".favorites_js");
 let favElement = document.createElement("div");
@@ -100,7 +101,7 @@ function handleClickSerie(ev) {
   const setfav = localStorage.setItem("favorites", JSON.stringify(favorites));
   RenderFav(favoriteClicked);
 }
-resultSerie.addEventListener("click", handleClickSerie);
+heart.addEventListener("click", handleClickSerie);
 
 // RenderFav(favorites);
 
