@@ -54,7 +54,7 @@ function RenderShow(globalData) {
     DivElement.innerHTML +=
       `<img src=${item.show.image.medium} id="${item.show.id}"/>` +
       " " +
-      `<img class="heart" src="../pngaaa.com-50870.png"/>` +
+      `<img class="heart" src="pngaaa.com-50870.png"/>` +
       `<p> Language: ${item.show.language}</p>`;
   }
   //   addListenersToSerie(globalData);
