@@ -12,7 +12,7 @@ let ImgElement = document.createElement("img");
 resultSerie.appendChild(ImgElement);
 resultSerie.appendChild(DivElement);
 const userSearch = serieInput.value.toLowerCase();
-const heart = document.querySelector(".heart");
+const logo = document.querySelector(".logo");
 
 const favoriteStyle = document.querySelector(".favorites_js");
 let favElement = document.createElement("div");
@@ -52,10 +52,11 @@ btn.addEventListener("click", getSerie);
 function RenderShow(globalData) {
   for (const item of globalData) {
     DivElement.innerHTML +=
-      `<img src=${item.show.image.medium} id="${item.show.id}"/>` +
+      `<img class="pointer" src=${item.show.image.medium} id="${item.show.id}"/>` +
       " " +
-      `<img class="heart" src="pngaaa.com-50870.png"/>` +
-      `<p> Language: ${item.show.language}</p>`;
+      `<p class="language"> <strong>Language:  </strong> ${item.show.language}</p>` +
+      `<img class="star" src="pngaaa.com-50870.png"/>` +
+      `<p class="add">Add / Remove</p>`;
   }
   //   addListenersToSerie(globalData);
 }
@@ -101,13 +102,12 @@ function handleClickSerie(ev) {
   const setfav = localStorage.setItem("favorites", JSON.stringify(favorites));
   RenderFav(favoriteClicked);
 }
-heart.addEventListener("click", handleClickSerie);
+resultSerie.addEventListener("click", handleClickSerie);
 
 // RenderFav(favorites);
 
-function handlerFavorites(ev) {
-  ev.preventDefault();
-  console.log(favorites.length);
+function handleIndex() {
+  landing();
 }
 
-logButton.addEventListener("click", handlerFavorites);
+logo.addEventListener("click", handleIndex);
